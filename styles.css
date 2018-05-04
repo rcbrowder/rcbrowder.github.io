@@ -1,10 +1,9 @@
 body{
-    background-color:  #4d4d4d;
+    background-color:  #333333;
+    color: white;
     font-family: Share;
-}
-
-div{
-    align-items: center;
+    text-align: center;
+    display: block;
 }
 
 .about{
