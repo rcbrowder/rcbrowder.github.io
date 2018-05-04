@@ -10,3 +10,8 @@ body{
 .about{
     font-family: Contrail One;
 }
+
+#profile{
+    height: 25%;
+    width: 25%;
+}
