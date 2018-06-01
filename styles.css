@@ -13,7 +13,8 @@
     color: white;
     font-family: Share;
     display: block;
-    margin: 20px;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 #annotation {
