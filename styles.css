@@ -1,14 +1,41 @@
-body{
+#main {
     background-color:  #333333;
     color: white;
     font-family: Share;
     text-align: center;
-    display: inline-block;
+    display: block;
     align-content: center;
+    margin: 20px;
 }
 
-.about{
+.blog{
+    background-color:  #333333;
+    color: white;
+    font-family: Share;
+    display: block;
+    margin: 20px;
+}
+
+#annotation {
+    text-align: center;
+}
+p {
     font-family: Contrail One;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 2em;
+}
+
+img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
 }
 
 #profile{

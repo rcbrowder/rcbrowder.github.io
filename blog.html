@@ -2,14 +2,18 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title></title>
+        <title>Chris's Blog</title>
+
+        <link href="./styles.css" type="text/css" rel="stylesheet">
+        <link href='https://fonts.googleapis.com/css?family=Share' rel='stylesheet'>
+        <link href='https://fonts.googleapis.com/css?family=Contrail One' rel='stylesheet'>
     </head>
-    <body>
-        <h1 id="whattheydontteachyouontheinternet">What they don't teach you on the internet</h1>
+    <body class="blog">
+        <h1 id="whattheydontteachyouontheinternet">What They Don't Teach You on the Internet</h1>
 
         <p>By: Chris Browder</p>
 
-        <h3 id="purpose">Purpose</h3>
+        <h2 id="purpose">Purpose</h2>
 
         <p>I had decided I wanted to be a Web Developer long before I decided to enroll in the Awesome Inc. Bootcamp. I tinkered around in college with HTML and CSS. I learned UNIX commands and downloaded a slick text editor. I felt like I knew some stuff.</p>
 
@@ -21,11 +25,16 @@
 
         <p>Before I enrolled I did a lot of research on whether it would be worth it. I'm 9 days in and it has been everything I hoped it would be. So to help others make the decision I'm going to highlight some things I've learned that the online classes and tutorials didn't help me with.</p>
 
-        <h4 id="usinggitwateam">Using Git w/ a Team</h4>
+        <h2 id="usinggitwateam">Using Git w/ a Team</h2>
 
-        <p>I learned some git on my own pre-bootcamp. I knew the basic commands and the purpose of git. Learning online deprived me of one crucial aspect of git - in the real world you won't be working by yourself. Working with a team to develop and publish a project is integral to any technical career. You can't learn it by yourself. One of the very first things we did in camp was to look at the structure of an organized remote git repository.
-            <img src='https://nvie.com/img/git-model@2x.png' alt='Git Branching Model'>
-            Source: <a href = 'https://nvie.com/posts/a-successful-git-branching-model/Source'>Vincent Driessen</a></p>
+        <p>I learned some git on my own pre-bootcamp. I knew the basic commands and the purpose of git. Learning online deprived me of one crucial aspect of git - in the real world you won't be working by yourself. Working with a team to develop and publish a project is integral to any technical career. You can't learn it by yourself. One of the very first things we did in camp was to look at the structure of an organized remote git repository.</p>
+
+        <div>
+            <img src='https://nvie.com/img/git-model@2x.png' alt='Git Branching Model' width="550px">
+        </div>
+        <div id = 'annotation'>
+            Source: <a href = 'https://nvie.com/posts/a-successful-git-branching-model/Source'>Vincent Driessen</a>
+        </div>
 
         <p>They don't teach you this on Codecademy.</p>
 
@@ -50,25 +59,25 @@
                 # both modified:      styleguide.md
                 #
                 no changes added to commit (use "git add" and/or "git commit -a")
-                </code></pre>
+            </code></pre>
 
-                <p>This means either you or the person(s) you are conflicting with must change your code. Git makes this easy by doing something interesting to your code to help identify the conflicts! Git places conflict markers to show how your code is different from the other party's. When you open the file in your text editor, you'll see your changes from the base branch after the line <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>. Then after your changes there will be a separator <code>=======</code> followed by the conflicting code. To signify the end another marker will be displayed with the branch name like so <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch-newFeature</code>. All together it looks like this:</p>
+            <p>This means either you or the person(s) you are conflicting with must change your code. Git makes this easy by doing something interesting to your code to help identify the conflicts! Git places conflict markers to show how your code is different from the other party's. When you open the file in your text editor, you'll see your changes from the base branch after the line <code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>. Then after your changes there will be a separator <code>=======</code> followed by the conflicting code. To signify the end another marker will be displayed with the branch name like so <code>&gt;&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch-newFeature</code>. All together it looks like this:</p>
 
-                <pre><code>
-                    I want to put
-                    &lt;&lt;&lt;&lt;&lt;&lt;&lt;
-                    apples in the code.
-                    =======
-                    oranges in the code.
-                    &gt;&gt;&gt;&gt;&gt;&gt;&gt; branch-newFruit
-                </code></pre>
+            <pre><code>
+                I want to put
+                &lt;&lt;&lt;&lt;&lt;&lt;&lt;
+                apples in the code.
+                =======
+                oranges in the code.
+                &gt;&gt;&gt;&gt;&gt;&gt;&gt; branch-newFruit
+            </code></pre>
 
-                <p>You can then decide what code to keep, delete the rest, and merge the branch.</p>
+            <p>You can then decide what code to keep, delete the rest, and merge the branch.</p>
 
-                <p>Merge conflicts will happen all the time when working with a team so getting comfortable with seeing and resolving them is important. This is difficult to learn just by reading without actually experiencing it.</p>
+            <p>Merge conflicts will happen all the time when working with a team so getting comfortable with seeing and resolving them is important. This is difficult to learn just by reading without actually experiencing it.</p>
 
-                <h3 id="oneofmany">One of many</h3>
+            <h2 id="oneofmany">One of many</h2>
 
-                <p>There are tons of tips, tricks, tools, methods, techniques, and technologies we've discussed so far in Bootcamp. I hope to keep this blog updated with them so you can see for yourself the value of a program like this. Check back soon.</p>
+            <p>There are tons of tips, tricks, tools, methods, techniques, and technologies we've discussed so far in Bootcamp. I hope to keep this blog updated with them so you can see for yourself the value of a program like this. Check back soon.</p>
         </body>
 </html>
