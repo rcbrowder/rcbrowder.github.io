@@ -13,7 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
-title: Frickin' Awesome Stuff
+title: Chris's Bootcamp Blog
 email: rcbrowder@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   "Should I pay for a coding bootcamp?" That's the question I hope to help you answer with this blog. I will be documenting my journey through the Awesome Inc. Web Developer Bootcamp to give you an idea of the content, pace, and value of a course like this.
