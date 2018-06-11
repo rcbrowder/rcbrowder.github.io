@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-06-11T08:39:55-04:00</updated><id>http://localhost:4000/</id><title type="html">Frickin’ Awesome Stuff</title><subtitle>&quot;Should I pay for a coding bootcamp?&quot; That's the question I hope to help you answer with this blog. I will be documenting my journey through the Awesome Inc. Web Developer Bootcamp to give you an idea of the content, pace, and value of a course like this.</subtitle><entry><title type="html">3 weeks down</title><link href="http://localhost:4000/2018/06/08/3-Weeks-Down.html" rel="alternate" type="text/html" title="3 weeks down" /><published>2018-06-08T00:00:00-04:00</published><updated>2018-06-08T00:00:00-04:00</updated><id>http://localhost:4000/2018/06/08/3%20Weeks%20Down</id><content type="html" xml:base="http://localhost:4000/2018/06/08/3-Weeks-Down.html">&lt;h1 id=&quot;3-weeks-down&quot;&gt;3 Weeks Down&lt;/h1&gt;
+
+&lt;h3 id=&quot;update-of-progress&quot;&gt;Update of Progress&lt;/h3&gt;
+
+&lt;p&gt;This week we continued to focus on vanilla JavaScript. We made sure that we understood how to pull information from APIs, utilize localStorage in browsers, and created a new portfolio project.&lt;/p&gt;
+
+&lt;p&gt;The project was a custom website for a restaurant. (You can view mine &lt;a href=&quot;http://awesome-eats.herokuapp.com/&quot;&gt;here&lt;/a&gt;.) We had to use all the skills we’ve learned thus far to build the site including pulling information from an API. Our pretend restaurant is brand new so the owner’s are constantly changing and refining the menu. Lucky for us, they created an API so we can keep the website constantly up to date with the current fare.&lt;/p&gt;
+
+&lt;p&gt;While working with our APIs we came upon a problem: if I want to request information from a second API, using information returned from the first, things don’t behave as expected.&lt;/p&gt;
+
+&lt;h2 id=&quot;asynchronous-vs-synchronous&quot;&gt;Asynchronous vs. Synchronous&lt;/h2&gt;
+
+&lt;p&gt;Functions in Javascript are like runners in a 100m sprint - they don’t wait for each other. When a JavaScript file is read all functions begin running at once. This is because JavaScript is an &lt;strong&gt;asynchronous&lt;/strong&gt; programming language.&lt;/p&gt;
+
+&lt;p&gt;Let’s return to the track example to illustrate the difference between &lt;strong&gt;asynchronous&lt;/strong&gt; and &lt;strong&gt;synchronous&lt;/strong&gt; languages.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Synchronous&lt;/strong&gt; programming languages execute commands in a specified order like runners in a relay race. &lt;img src=&quot;https://www.wikihow.com/images/thumb/c/c2/Run-a-4X100-Relay-Step-12-Version-4.jpg/aid588573-v4-728px-Run-a-4X100-Relay-Step-12-Version-4.jpg&quot; alt=&quot;Relay Race&quot; /&gt;
+At the beginning of the race one runner starts while the other runners wait until they are handed the baton to begin running.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Asynchronous&lt;/strong&gt; languages execute everything simultaneously. At the beginning of the race all the runners start running.
+&lt;img src=&quot;https://image.shutterstock.com/image-photo/paris-france-sep13-athletes-on-260nw-322856711.jpg&quot; alt=&quot;Sprint&quot; /&gt;&lt;/p&gt;
+
+&lt;h4 id=&quot;so-how-does-this-affect-our-api-calls&quot;&gt;So how does this affect our API calls?&lt;/h4&gt;
+
+&lt;p&gt;We have two API requests to execute. &lt;code class=&quot;highlighter-rouge&quot;&gt;api-1&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;api-2&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Imagine &lt;code class=&quot;highlighter-rouge&quot;&gt;api-1&lt;/code&gt; gives us a list of hotels with open rooms organized by cheapest to most expensive. And &lt;code class=&quot;highlighter-rouge&quot;&gt;api-2&lt;/code&gt; returns a list of prices for rooms in a specific hotel. We create some JavaScript code so that &lt;code class=&quot;highlighter-rouge&quot;&gt;api-2&lt;/code&gt; uses information from &lt;code class=&quot;highlighter-rouge&quot;&gt;api-1&lt;/code&gt; to return a list of prices for rooms in the cheapest hotel. When we run this code it doesn’t work! Because JavaScript is &lt;strong&gt;asynchronous&lt;/strong&gt; the two APIs try to run simultaneously. And without the information from &lt;code class=&quot;highlighter-rouge&quot;&gt;api-1&lt;/code&gt;, there is nothing to request from &lt;code class=&quot;highlighter-rouge&quot;&gt;api-2&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;How do we fix this? With callbacks.&lt;/p&gt;
+
+&lt;h2 id=&quot;callbacks&quot;&gt;Callbacks&lt;/h2&gt;
+
+&lt;p&gt;Callbacks are extremely important in JavaScript because they allow us to run functions in a specified order. So what is a callback?&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A callback is a function that is to be executed after another function has finished executing — hence the name ‘call back’.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Callbacks used to be quite tricky but lucky for us JavaScript has recently added native support for &lt;strong&gt;Promises&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;promises&quot;&gt;Promises&lt;/h4&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;A &lt;strong&gt;promise&lt;/strong&gt; is a returned object to which you attach callbacks, instead of passing callbacks into a function.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;We discussed what a callback is and why we need them so let’s jump right into creating a promise.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;var promise = new Promise(function(resolve, reject) {
+  // do a thing, possibly async, then…
+
+  if (/* everything turned out fine */) {
+    resolve(&quot;Stuff worked!&quot;);
+  }
+  else {
+    reject(Error(&quot;It broke&quot;));
+  }
+});
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The promise constructor takes one argument, a callback with two parameters, resolve and reject.&lt;/p&gt;
+
+&lt;p&gt;Now that we have a promise, let’s implement it.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-JavaScript&quot;&gt;promise.then(function(result) {
+  console.log(result); // &quot;Stuff worked!&quot;
+}, function(err) {
+  console.log(err); // Error: &quot;It broke&quot;
+});
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;then()&lt;/code&gt; takes two arguments, a callback for a success case, and another for the failure case.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;JavaScript is an asynchronous language that runs functions simultaneously. In order to have a function wait on another action to complete before running we use callbacks. Callbacks and promises are powerful and complex JavaScript concepts. I urge you to research these on your own to gain a deeper understanding of how they work and when to implement them.&lt;/p&gt;</content><author><name></name></author><summary type="html">3 Weeks Down</summary></entry><entry><title type="html">What they don&amp;#8217;t teach</title><link href="http://localhost:4000/2018/06/01/What-They-Don't-Teach.html" rel="alternate" type="text/html" title="What they don't teach" /><published>2018-06-01T00:00:00-04:00</published><updated>2018-06-01T00:00:00-04:00</updated><id>http://localhost:4000/2018/06/01/What%20They%20Don't%20Teach</id><content type="html" xml:base="http://localhost:4000/2018/06/01/What-They-Don't-Teach.html">&lt;h1 id=&quot;what-they-dont-teach-you-on-the-internet&quot;&gt;What they don’t teach you on the internet&lt;/h1&gt;
+&lt;p&gt;By: Chris Browder&lt;/p&gt;
+
+&lt;h3 id=&quot;purpose&quot;&gt;Purpose&lt;/h3&gt;
+
+&lt;p&gt;I had decided I wanted to be a Web Developer long before I decided to enroll in the Awesome Inc. Bootcamp. I tinkered around in college with HTML and CSS. I learned UNIX commands and downloaded a slick text editor. I felt like I knew some stuff.&lt;/p&gt;
+
+&lt;p&gt;Then I graduated.&lt;/p&gt;
+
+&lt;p&gt;Like many other college grads I got hit with the ~Real World~ pretty quickly. I couldn’t find a job in any kind of programming or development role, not even as an intern. I just didn’t have the skills. So I took a job as a Project Manager at Epic Systems in Madison, WI. Approximately 13 months later I had ascertained that I hated my job and Wisconsin. (Both Epic and Wisconsin are fine places for many people! Just not for me.) So I quit. I was young(-ish). I had money saved up. I was ready to become a Web Dev.&lt;/p&gt;
+
+&lt;p&gt;I soon realized it’s not easy to teach yourself a career. It’s possible. There are a million resources online that offer guided coding lessons, video tutorials, online classes, and billion pages of documentation. But it’s very difficult going that route so I enrolled in a bootcamp.&lt;/p&gt;
+
+&lt;p&gt;Before I enrolled I did a lot of research on whether it would be worth it. I’m 9 days in and it has been everything I hoped it would be. So to help others make the decision I’m going to highlight some things I’ve learned that the online classes and tutorials didn’t help me with.&lt;/p&gt;
+
+&lt;h4 id=&quot;using-git-w-a-team&quot;&gt;Using Git w/ a Team&lt;/h4&gt;
+
+&lt;p&gt;I learned some git on my own pre-bootcamp. I knew the basic commands and the purpose of git. Learning online deprived me of one crucial aspect of git - in the real world you won’t be working by yourself. Working with a team to develop and publish a project is integral to any technical career. You can’t learn it by yourself. One of the very first things we did in camp was to look at the structure of an organized remote git repository.
+ &lt;img src=&quot;https://nvie.com/img/git-model@2x.png&quot; alt=&quot;Git Branching Model&quot; /&gt;
+ Source: &lt;a href=&quot;https://nvie.com/posts/a-successful-git-branching-model/Source&quot;&gt;Vincent Driessen&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;They don’t teach you this on Codecademy.&lt;/p&gt;
+
+&lt;p&gt;Then we engineered our own merge conflict. A merge conflict occurs when you try to merge your code into the project when someone else has also altered that code.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Git can often resolve differences between merged branches. Usually, the changes are on different lines, or even in different files, which makes the merge simple for computers to understand. However, sometimes there are competing changes that Git needs your help with to decide which changes to incorporate in the final merge. Often, merge conflicts happen when people make different changes to the same line of the same file, or when one person edits a file and another person deletes the same file. You must resolve the conflict before you can merge the branches.
+  - GitHub Help&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Here’s an example of what a merge conflict might look like.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;$ git status
+# On branch branch-b
+# You have unmerged paths.
+#   (fix conflicts and run &quot;git commit&quot;)
+#
+# Unmerged paths:
+#   (use &quot;git add ...&quot; to mark resolution)
+#
+# both modified:      styleguide.md
+#
+no changes added to commit (use &quot;git add&quot; and/or &quot;git commit -a&quot;)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;This means either you or the person(s) you are conflicting with must change your code. Git makes this easy by doing something interesting to your code to help identify the conflicts! Git places conflict markers to show how your code is different from the other party’s. When you open the file in your text editor, you’ll see your changes from the base branch after the line &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&lt;/code&gt;. Then after your changes there will be a separator &lt;code class=&quot;highlighter-rouge&quot;&gt;=======&lt;/code&gt; followed by the conflicting code. To signify the end another marker will be displayed with the branch name like so &lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; branch-newFeature&lt;/code&gt;. All together it looks like this:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I want to put
+&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;&amp;lt;
+apples in the code.
+=======
+oranges in the code.
+&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt;&amp;gt; branch-newFruit
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;You can then decide what code to keep, delete the rest, and merge the branch.&lt;/p&gt;
+
+&lt;p&gt;Merge conflicts will happen all the time when working with a team so getting comfortable with seeing and resolving them is important. This is difficult to learn just by reading without actually experiencing it.&lt;/p&gt;
+
+&lt;h3 id=&quot;one-of-many&quot;&gt;One of many&lt;/h3&gt;
+
+&lt;p&gt;There are tons of tips, tricks, tools, methods, techniques, and technologies we’ve discussed so far in Bootcamp. I hope to keep this blog updated with them so you can see for yourself the value of a program like this. Check back soon.&lt;/p&gt;</content><author><name></name></author><summary type="html">What they don’t teach you on the internet By: Chris Browder</summary></entry></feed>

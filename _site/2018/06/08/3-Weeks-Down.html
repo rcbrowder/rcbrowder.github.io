@@ -1,0 +1,75 @@
+<h1 id="3-weeks-down">3 Weeks Down</h1>
+
+<h3 id="update-of-progress">Update of Progress</h3>
+
+<p>This week we continued to focus on vanilla JavaScript. We made sure that we understood how to pull information from APIs, utilize localStorage in browsers, and created a new portfolio project.</p>
+
+<p>The project was a custom website for a restaurant. (You can view mine <a href="http://awesome-eats.herokuapp.com/">here</a>.) We had to use all the skills we’ve learned thus far to build the site including pulling information from an API. Our pretend restaurant is brand new so the owner’s are constantly changing and refining the menu. Lucky for us, they created an API so we can keep the website constantly up to date with the current fare.</p>
+
+<p>While working with our APIs we came upon a problem: if I want to request information from a second API, using information returned from the first, things don’t behave as expected.</p>
+
+<h2 id="asynchronous-vs-synchronous">Asynchronous vs. Synchronous</h2>
+
+<p>Functions in Javascript are like runners in a 100m sprint - they don’t wait for each other. When a JavaScript file is read all functions begin running at once. This is because JavaScript is an <strong>asynchronous</strong> programming language.</p>
+
+<p>Let’s return to the track example to illustrate the difference between <strong>asynchronous</strong> and <strong>synchronous</strong> languages.</p>
+
+<p><strong>Synchronous</strong> programming languages execute commands in a specified order like runners in a relay race. <img src="https://www.wikihow.com/images/thumb/c/c2/Run-a-4X100-Relay-Step-12-Version-4.jpg/aid588573-v4-728px-Run-a-4X100-Relay-Step-12-Version-4.jpg" alt="Relay Race" />
+At the beginning of the race one runner starts while the other runners wait until they are handed the baton to begin running.</p>
+
+<p><strong>Asynchronous</strong> languages execute everything simultaneously. At the beginning of the race all the runners start running.
+<img src="https://image.shutterstock.com/image-photo/paris-france-sep13-athletes-on-260nw-322856711.jpg" alt="Sprint" /></p>
+
+<h4 id="so-how-does-this-affect-our-api-calls">So how does this affect our API calls?</h4>
+
+<p>We have two API requests to execute. <code class="highlighter-rouge">api-1</code> and <code class="highlighter-rouge">api-2</code>.</p>
+
+<p>Imagine <code class="highlighter-rouge">api-1</code> gives us a list of hotels with open rooms organized by cheapest to most expensive. And <code class="highlighter-rouge">api-2</code> returns a list of prices for rooms in a specific hotel. We create some JavaScript code so that <code class="highlighter-rouge">api-2</code> uses information from <code class="highlighter-rouge">api-1</code> to return a list of prices for rooms in the cheapest hotel. When we run this code it doesn’t work! Because JavaScript is <strong>asynchronous</strong> the two APIs try to run simultaneously. And without the information from <code class="highlighter-rouge">api-1</code>, there is nothing to request from <code class="highlighter-rouge">api-2</code>.</p>
+
+<p>How do we fix this? With callbacks.</p>
+
+<h2 id="callbacks">Callbacks</h2>
+
+<p>Callbacks are extremely important in JavaScript because they allow us to run functions in a specified order. So what is a callback?</p>
+
+<blockquote>
+  <p>A callback is a function that is to be executed after another function has finished executing — hence the name ‘call back’.</p>
+</blockquote>
+
+<p>Callbacks used to be quite tricky but lucky for us JavaScript has recently added native support for <strong>Promises</strong>.</p>
+
+<h4 id="promises">Promises</h4>
+
+<blockquote>
+  <p>A <strong>promise</strong> is a returned object to which you attach callbacks, instead of passing callbacks into a function.</p>
+</blockquote>
+
+<p>We discussed what a callback is and why we need them so let’s jump right into creating a promise.</p>
+
+<pre><code class="language-JavaScript">var promise = new Promise(function(resolve, reject) {
+  // do a thing, possibly async, then…
+
+  if (/* everything turned out fine */) {
+    resolve("Stuff worked!");
+  }
+  else {
+    reject(Error("It broke"));
+  }
+});
+</code></pre>
+<p>The promise constructor takes one argument, a callback with two parameters, resolve and reject.</p>
+
+<p>Now that we have a promise, let’s implement it.</p>
+
+<pre><code class="language-JavaScript">promise.then(function(result) {
+  console.log(result); // "Stuff worked!"
+}, function(err) {
+  console.log(err); // Error: "It broke"
+});
+</code></pre>
+
+<p><code class="highlighter-rouge">then()</code> takes two arguments, a callback for a success case, and another for the failure case.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>JavaScript is an asynchronous language that runs functions simultaneously. In order to have a function wait on another action to complete before running we use callbacks. Callbacks and promises are powerful and complex JavaScript concepts. I urge you to research these on your own to gain a deeper understanding of how they work and when to implement them.</p>
