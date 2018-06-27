@@ -1,5 +1,3 @@
-# Put Some Data in Your Base!
-
 ## Purpose
 
 Backend baby! We're in it! ... Backend web development. We're talking about web development...
@@ -25,3 +23,9 @@ We've discussed the *idea* of a database but now we're going to talk about the r
 ### PostgreSQL
 
 PostgreSQL (pronounced like the first half of *"post office"* and the second half of *"digress"*) as explained by their own website - *is a powerful, open source object-relational database system that uses and extends the SQL language combined with many features that safely store and scale the most complicated data workloads. The origins of PostgreSQL date back to 1986 as part of the POSTGRES project at the University of California at Berkeley and has more than 30 years of active development on the core platform.*<sup>[1]</sup>
+
+![PostgresForMac](https://screenshots.macupdate.com/JPG/53410/53410_1502450760_scr.jpg)
+
+## Conclusion
+
+Now that we're familiar with databases and PostgreSQL the next post will dive into manipulating databases with SQL. Welcome to Postgres!
