@@ -16,15 +16,15 @@ Next, navigate to the *Resources* tab. You will see a section for "Add-ons" with
 
 Resources Page             |  Add-on Modal
 :-------------------------:|:-------------------------:
-![Resources Page](/_site/assets/laravel-deployment-example-resources.png)  |  ![Add-on Modal](/_site/assets/laravel-deployment-example_·_Resources___Heroku.png)
+![Resources Page]({{ "/_site/assets/laravel-deployment-example-resources.png" | absolute_url }})  |  ![Add-on Modal]({{ "/_site/assets/laravel-deployment-example_·_Resources___Heroku.png" | absolute_url }})
 
 Next, navigate to the settings tab and locate the *Config Vars* section and select *Reveal Config Vars*. When you reveal them you will see a configuration variable already with a key of `DATABASE_URL`. This is only created **after** we add the postgres add-on. If you look for it before provisioning the add-on **it will not be there**.
 
-![DATABASE_URL](/_site/assets/laravel-deployment-example_·_Settings___Heroku.png)
+![DATABASE_URL]({{ "/_site/assets/laravel-deployment-example_·_Settings___Heroku.png" | absolute_url }})
 
 We still need to populate two more config variables in order for our project to make all the required connections correctly. The first one is to make a key called `DB_CONNECTION` with a value of `pgsql`. The other one will be the `APP_KEY`. It's possible to create a new `APP_KEY` but you already have one. In your Laravel project open your `.env` file. The required value should be the third variable down. Copy and past that value into your cofig var on Heroku.
 
-![.env File](/_site/assets/_env-laravel-deployment-example.png)
+![.env File]({{ "/_site/assets/_env-laravel-deployment-example.png" | absolute_url }})
 
 ### Change Laravel Configurations
 
@@ -32,7 +32,7 @@ Heroku is now ready for our project but our project isn't yet ready for Heroku.
 
 In order to have our application using the Heroku database we just made, we need to utilize the `DATABASE_URL` we saw earlier. Copy the value from that field and paste it into your `.env` file with the variable assignment like so:
 
-![Database URL](/_site/assets/_env-database_url-example.png)
+![Database URL]({{ "/_site/assets/_env-database_url-example.png" | absolute_url }})
 
 > NOTE: Make sure there are no spaces between DATABASE_URL, =, and the actual URL. They need to all be on one line with no spaces or Laravel might not read the file correctly.
 
@@ -65,13 +65,13 @@ That's it! You can now push your project to Heroku and have it successfully inte
 
 Now that we have our project configured correctly we would probably like to view our database. I use PSequel on Mac to view my databases but you can use whatever product you wish. PSequel makes this connection very easy. Simply copy the `DATABASE_URL` that we've seen a few times now, then open PSequel and click "Import from URL in Clipboard". PSequel will handle the rest for you. Also, make sure you check the `SSL` box. Heroku requires SSL is used but you don't have to populate and of the fields.
 
-![PSequel](/_site/assets/PSequel_and_2018-07-12-Deploying-Laravel-5-Applications-to-Heroku_md_—___Desktop_Bootcamp_rcbrowder_github_io__posts.png)
+![PSequel]({{ "/_site/assets/PSequel_and_2018-07-12-Deploying-Laravel-5-Applications-to-Heroku_md_—___Desktop_Bootcamp_rcbrowder_github_io__posts.png" | absolute_url }})
 
 ### Don't Forget to Migrate
 
 Finally, before we can start saving user credentials or anything else we have to make sure we have our tables set up in our database! Using the Heroku CLI execute `heroku run bash` to start a Heroku bash prompt. Then, execute the usual `php artisan migrate` command to migrate your tables. It's that easy!
 
-![Heroku bash](/_site/assets/laravel-deployment-example_—_node_◂_heroku_run_bash_—_90×44.png)
+![Heroku bash]({{ "/_site/assets/laravel-deployment-example_—_node_◂_heroku_run_bash_—_90×44.png" | absolute_url }})
 
 ## Wrap-Up
 
